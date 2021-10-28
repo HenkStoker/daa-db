@@ -13,7 +13,7 @@
     </RootPath>
     <RootNamespace>daa_metadata_db</RootNamespace>
     <AssemblyName>daa_metadata_db</AssemblyName>
-    <ModelCollation>1033, CI</ModelCollation>
+    <ModelCollation>1033,CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
@@ -22,6 +22,8 @@
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -56,5 +58,51 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="daa\" />
+    <Folder Include="daa\Tables\" />
+    <Folder Include="logging\" />
+    <Folder Include="logging\Tables\" />
+    <Folder Include="daa\Views\" />
+    <Folder Include="Security\" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Functions\" />
+    <Folder Include="daa\Stored Procedures\" />
+    <Folder Include="dbo\Stored Procedures\" />
+    <Folder Include="logging\Stored Procedures\" />
+    <Folder Include="dbo\User Defined Types\" />
+    <Folder Include="dbo\Sequences\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="daa\Tables\MetaTables.sql" />
+    <Build Include="daa\Tables\MetaTableColumns.sql" />
+    <Build Include="daa\Tables\BronBestanden.sql" />
+    <Build Include="logging\Tables\EtlLog.sql" />
+    <Build Include="daa\Tables\stored_procedures.sql" />
+    <Build Include="daa\Tables\ML_models.sql" />
+    <Build Include="daa\Views\vw_Active_SourceFiles.sql" />
+    <Build Include="daa\Views\vw_Active_SourceTables.sql" />
+    <Build Include="daa\Views\vw_Enabled_SP.sql" />
+    <Build Include="daa\Views\vw_Enabled_sources.sql" />
+    <Build Include="Security\mdd_remote.sql" />
+    <Build Include="dbo\Functions\ufnGetSalesOrderStatusText.sql" />
+    <Build Include="dbo\Functions\ufnGetAllCategories.sql" />
+    <Build Include="dbo\Functions\ufnGetCustomerInformation.sql" />
+    <Build Include="daa\Stored Procedures\stageDLFiles.sql" />
+    <Build Include="dbo\Stored Procedures\uspPrintError.sql" />
+    <Build Include="dbo\Stored Procedures\uspLogError.sql" />
+    <Build Include="daa\Stored Procedures\UpdateLastLoadDate.sql" />
+    <Build Include="logging\Stored Procedures\usp_InsertEtlLog.sql" />
+    <Build Include="logging\Stored Procedures\usp_UpdateEtlLog.sql" />
+    <Build Include="daa\Stored Procedures\usp_ReadJsonFile.sql" />
+    <Build Include="daa\Stored Procedures\UpdateLastLoadDate_Source.sql" />
+    <Build Include="dbo\User Defined Types\AccountNumber.sql" />
+    <Build Include="dbo\User Defined Types\Flag.sql" />
+    <Build Include="dbo\User Defined Types\Name.sql" />
+    <Build Include="dbo\User Defined Types\NameStyle.sql" />
+    <Build Include="dbo\User Defined Types\OrderNumber.sql" />
+    <Build Include="dbo\User Defined Types\Phone.sql" />
+    <Build Include="Security\daa.sql" />
+    <Build Include="Security\logging.sql" />
+    <Build Include="dbo\Sequences\bestand_seq.sql" />
   </ItemGroup>
 </Project>

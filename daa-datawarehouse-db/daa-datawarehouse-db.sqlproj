@@ -13,7 +13,7 @@
     </RootPath>
     <RootNamespace>daa_datawarehouse_db</RootNamespace>
     <AssemblyName>daa_datawarehouse_db</AssemblyName>
-    <ModelCollation>1033, CI</ModelCollation>
+    <ModelCollation>1033,CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
@@ -22,6 +22,8 @@
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -56,5 +58,50 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="dm\" />
+    <Folder Include="dm\Tables\" />
+    <Folder Include="stg_adv_works\" />
+    <Folder Include="stg_adv_works\Tables\" />
+    <Folder Include="stg_file\" />
+    <Folder Include="stg_file\Tables\" />
+    <Folder Include="daa\" />
+    <Folder Include="daa\Tables\" />
+    <Folder Include="daa\Stored Procedures\" />
+    <Folder Include="dm\Stored Procedures\" />
+    <Folder Include="Security\" />
+    <Folder Include="External Resources\" />
+    <Folder Include="daa\External Tables\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dm\Tables\Product.sql" />
+    <Build Include="dm\Tables\Customer.sql" />
+    <Build Include="dm\Tables\SalesOrderInfo.sql" />
+    <Build Include="stg_adv_works\Tables\Customer.sql" />
+    <Build Include="stg_adv_works\Tables\Product.sql" />
+    <Build Include="stg_adv_works\Tables\SalesOrderHeader.sql" />
+    <Build Include="stg_adv_works\Tables\SalesOrderDetail.sql" />
+    <Build Include="stg_file\Tables\ProductModel.sql" />
+    <Build Include="stg_file\Tables\ProductDescription.sql" />
+    <Build Include="daa\Tables\Text_MLinput.sql" />
+    <Build Include="daa\Tables\Text_MLoutput.sql" />
+    <Build Include="daa\Tables\Product.sql" />
+    <Build Include="daa\Tables\Customer.sql" />
+    <Build Include="daa\Stored Procedures\Create_Tables.sql" />
+    <Build Include="dm\Stored Procedures\loadDMSales.sql" />
+    <Build Include="dm\Stored Procedures\loadDMCustomer.sql" />
+    <Build Include="dm\Stored Procedures\loadDMProduct.sql" />
+    <Build Include="daa\Stored Procedures\TruncateStaging.sql" />
+    <Build Include="Security\mdd_credential.sql" />
+    <Build Include="Security\daa.sql" />
+    <Build Include="Security\dm.sql" />
+    <Build Include="Security\stg_adv_works.sql" />
+    <Build Include="Security\stg_file.sql" />
+    <Build Include="External Resources\ext_ds_metadata.sql" />
+    <Build Include="daa\External Tables\MetaTableColumns.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="daa\External Tables\MetaTables.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
   </ItemGroup>
 </Project>
